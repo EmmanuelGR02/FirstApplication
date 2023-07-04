@@ -1,7 +1,11 @@
 package com.example.firstapplication
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
+import android.view.View
+import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -15,33 +19,68 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.modifier.modifierLocalConsumer
+import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.firstapplication.ui.theme.FirstApplicationTheme
 
 class MainActivity : ComponentActivity() {
-    
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        main()
+        hideKeyboard()
+    }
 
-        val button1 = findViewById<Button>(R.id.button1)
-        val textView1 = findViewById<TextView>(R.id.idTVHeading1)
-        val userInput = findViewById<EditText>(R.id.userInput)
+    @SuppressLint("MissingInflatedId")
+    fun secondScreen() {
+        setContentView(R.layout.second_screen)
+        var back_btn = findViewById<Button>(R.id.SecondScreen_back_btn)
 
-        val button2 = findViewById<Button>(R.id.button2)
-
-        button1?.setOnClickListener() {
-            textView1.text = userInput.text
+        back_btn?.setOnClickListener() {
+            main()
         }
 
-        button2?.setOnClickListener() {
-            secondScreen()
+    }
+
+    fun usernames(): ArrayList<String> {
+        var username = ArrayList<String>()
+        username.add("ENRIQUE")
+        username.add("EMMANUEL")
+        username.add("KEVIN")
+        return username
+    }
+
+    fun isUsernameValid(name: String): Boolean {
+        var name2 = name.uppercase()
+        return usernames().contains(name2)
+    }
+
+
+    fun main() {
+        setContentView(R.layout.activity_main)
+        hideKeyboard()
+
+        // call main button
+        var main_button = findViewById<Button>(R.id.main_submit)
+
+        main_button?.setOnClickListener() {
+            var name = findViewById<EditText>(R.id.main_userName).text.toString()
+            if (isUsernameValid(name) == true) {
+                secondScreen()
+                findViewById<TextView>(R.id.SecondScreen_text).text = "Welcome, " + name
+            } else {
+                findViewById<TextView>(R.id.main_wrongId).text = "Wrong Username!"
+            }
         }
     }
 
-    fun secondScreen() {
-        setContentView(R.layout.second_screen)
+    fun hideKeyboard() {
+        val view = this.currentFocus
+        if (view != null) {
+            val hide = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            hide.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+        window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
     }
 
 
