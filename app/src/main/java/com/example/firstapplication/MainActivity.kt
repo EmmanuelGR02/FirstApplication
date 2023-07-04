@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -56,12 +57,14 @@ class MainActivity : ComponentActivity() {
     }
 
 
+    @SuppressLint("MissingInflatedId")
     fun main() {
         setContentView(R.layout.activity_main)
         hideKeyboard()
 
-        // call main button
+        // buttons
         var main_button = findViewById<Button>(R.id.main_submit)
+        var hideShowImage_btn = findViewById<Button>(R.id.SecondScreen_hideShow_btn)
 
         main_button?.setOnClickListener() {
             var name = findViewById<EditText>(R.id.main_userName).text.toString()
@@ -74,6 +77,23 @@ class MainActivity : ComponentActivity() {
                 findViewById<TextView>(R.id.main_wrongId).text = "Access Denied"
             }
         }
+
+        var image = findViewById<ImageView>(R.id.SecondScreen_image)
+        var count = 1;
+
+        if (count == 1) {
+            hideShowImage_btn?.setOnClickListener() {
+                image.visibility = ImageView.VISIBLE
+                hideShowImage_btn.text = "HIDE"
+                count == 2
+            }
+        } else {
+            hideShowImage_btn?.setOnClickListener() {
+                image.visibility = ImageView.INVISIBLE
+                hideShowImage_btn.text = "SHOW"
+                count == 1
+            }
+        }
     }
 
     fun hideKeyboard() {
@@ -83,6 +103,14 @@ class MainActivity : ComponentActivity() {
             hide.hideSoftInputFromWindow(view.windowToken, 0)
         }
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN)
+    }
+
+    fun hideImage(image: ImageView) {
+        image.visibility = ImageView.VISIBLE
+    }
+
+    fun showImage(image: ImageView) {
+        image.visibility = ImageView.VISIBLE
     }
 
 
