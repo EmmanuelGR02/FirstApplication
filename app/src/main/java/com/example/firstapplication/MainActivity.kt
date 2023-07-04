@@ -68,8 +68,10 @@ class MainActivity : ComponentActivity() {
             if (isUsernameValid(name) == true) {
                 secondScreen()
                 findViewById<TextView>(R.id.SecondScreen_text).text = "Welcome, " + name
+                findViewById<TextView>(R.id.User_Prompt).text = "What will you be doing today? "
+                var input = readLine()
             } else {
-                findViewById<TextView>(R.id.main_wrongId).text = "Wrong Username!"
+                findViewById<TextView>(R.id.main_wrongId).text = "Access Denied"
             }
         }
     }

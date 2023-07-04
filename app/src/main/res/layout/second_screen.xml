@@ -12,13 +12,34 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="20dp"
-        android:text=""
         android:gravity="center"
         android:padding="10dp"
+        android:text=""
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="20sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/User_Prompt"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:text=""
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="415dp"
+        android:layout_marginLeft="82dp"
+        android:textSize = "20sp"
+        />
+    <EditText
+        android:id="@+id/main_userName"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="520dp"
+        android:layout_marginLeft="60dp"
+        />
 
     <Button
         android:id="@+id/SecondScreen_back_btn"
