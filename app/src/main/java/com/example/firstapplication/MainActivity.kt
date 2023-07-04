@@ -29,10 +29,22 @@ class MainActivity : ComponentActivity() {
         val textView1 = findViewById<TextView>(R.id.idTVHeading1)
         val userInput = findViewById<EditText>(R.id.userInput)
 
-        button1?.setOnClickListener() {
+        val button2 = findViewById<Button>(R.id.button2)
 
+        button1?.setOnClickListener() {
             textView1.text = userInput.text
         }
+
+        button2?.setOnClickListener() {
+            secondScreen()
+        }
     }
+
+    fun secondScreen() {
+        setContentView(R.layout.second_screen)
+    }
+
+
+
 }
 
