@@ -26,9 +26,19 @@
         android:id="@+id/button1"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:layout_marginTop="140dp"
+        android:layout_marginLeft="160dp"
         android:gravity="center_horizontal"
         android:text="Button"
         tools:layout_editor_absoluteX="157dp"
         tools:layout_editor_absoluteY="165dp"
         tools:visibility="visible" />
+
+    <EditText
+        android:id="@+id/userInput"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginLeft="60dp"
+        />
 </RelativeLayout>

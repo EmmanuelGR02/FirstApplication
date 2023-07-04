@@ -3,6 +3,7 @@ package com.example.firstapplication
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,9 +27,11 @@ class MainActivity : ComponentActivity() {
 
         val button1 = findViewById<Button>(R.id.button1)
         val textView1 = findViewById<TextView>(R.id.idTVHeading1)
+        val userInput = findViewById<EditText>(R.id.userInput)
 
         button1?.setOnClickListener() {
-            textView1.text = "you pressed the button!"
+
+            textView1.text = userInput.text
         }
     }
 }
