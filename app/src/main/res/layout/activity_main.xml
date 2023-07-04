@@ -34,11 +34,5 @@
         tools:layout_editor_absoluteY="165dp"
         tools:visibility="visible" />
 
-    <EditText
-        android:id="@+id/userInput"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginLeft="60dp"
-        />
+
 </RelativeLayout>
